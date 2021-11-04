@@ -2,18 +2,14 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatefulWidget {
+class Login extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _MyAppState();
+    return _LoginState();
   }
 }
 
-class _MyAppState extends State<MyApp> {
+class _LoginState extends State<Login> {
   var passwordVisible = false;
   @override
   Widget build(BuildContext context) {
