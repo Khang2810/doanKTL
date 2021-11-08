@@ -35,6 +35,17 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   carousel_slider: ^4.0.0
+  equatable: ^2.0.3
+  dartz: ^0.10.0
+  bloc: ^7.2.1
+  flutter_bloc: ^7.3.3
+  mocktail: ^0.2.0
+  shared_preferences: ^2.0.8
+  data_connection_checker_tv: ^0.3.5-nullsafety
+  bloc_test: ^8.5.0
+  http: ^0.13.4
+  get_it: ^7.2.0
+
 
 dev_dependencies:
   flutter_test:
@@ -59,14 +70,7 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - images/1.jpg
-    - images/2.jpg
-    - images/3.jpg
-    - images/4.jpg
-    - images/5.jpg
-    - images/6.jpg
-    - images/7.jpg
+#  assets:
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
