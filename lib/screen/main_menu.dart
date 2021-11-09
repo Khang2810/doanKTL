@@ -60,44 +60,65 @@ class _MainMenuState extends State<MainMenu> {
                   ),
                 ],
               ),
-              bottomNavigationBar: Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    IconButton(
-                      icon: Icon(
-                        Icons.home_outlined,
-                        color: Colors.black,
-                        size: 30,
+              floatingActionButton: FloatingActionButton(
+                child: Icon(Icons.add),
+                onPressed: addnew,
+                backgroundColor: Colors.black,
+              ),
+              floatingActionButtonLocation:
+                  FloatingActionButtonLocation.centerDocked,
+              bottomNavigationBar: BottomAppBar(
+                shape: CircularNotchedRectangle(),
+                notchMargin: 10,
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                Icons.home_outlined,
+                                color: Colors.black,
+                                size: 30,
+                              ),
+                              onPressed: hotbutton,
+                            ),
+                            IconButton(
+                              icon: Icon(
+                                Icons.book_outlined,
+                                color: Colors.black,
+                                size: 30,
+                              ),
+                              onPressed: hotbutton,
+                            ),
+                          ],
+                        ),
                       ),
-                      onPressed: hotbutton,
-                    ),
-                    IconButton(
-                      icon: Icon(
-                        Icons.book_outlined,
-                        color: Colors.black,
-                        size: 30,
+                      Row(
+                        children: [
+                          IconButton(
+                            icon: Icon(
+                              Icons.question_answer_outlined,
+                              color: Colors.black,
+                              size: 30,
+                            ),
+                            onPressed: hotbutton,
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.account_circle_outlined,
+                              color: Colors.black,
+                              size: 30,
+                            ),
+                            onPressed: hotbutton,
+                          ),
+                        ],
                       ),
-                      onPressed: hotbutton,
-                    ),
-                    IconButton(
-                      icon: Icon(
-                        Icons.question_answer_outlined,
-                        color: Colors.black,
-                        size: 30,
-                      ),
-                      onPressed: hotbutton,
-                    ),
-                    IconButton(
-                      icon: Icon(
-                        Icons.account_circle_outlined,
-                        color: Colors.black,
-                        size: 30,
-                      ),
-                      onPressed: hotbutton,
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               body: Center(
@@ -166,4 +187,5 @@ class _MainMenuState extends State<MainMenu> {
   void recentlybutton() {}
   void hotbutton() {}
   void vocabbutton() {}
+  void addnew() {}
 }
