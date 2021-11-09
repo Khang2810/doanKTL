@@ -19,11 +19,11 @@ class UserRepositoryImpl extends UserRepository {
 
   @override
   Future<Either<Failures, UserSigInResponse>> getUserSignIn(
-      UserSignInRequestModel userSignInRequest) async {
+      UserSignInRequest userSignInRequest) async {
     if (await networkInfo.isConnected) {
       try {
         final remoteUser = await userRemoteSources.getUserSignIn(
-            userSignInRequest);
+            userSignInRequest as UserSignInRequestModel);
         return Right(remoteUser);
       } on ServerException{
         return Left(ServerFailures());

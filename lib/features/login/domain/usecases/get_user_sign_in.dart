@@ -5,7 +5,7 @@ import 'package:doanktl/features/login/data/models/user_sign_in_model.dart';
 import 'package:doanktl/features/login/domain/entities/user_sign_in.dart';
 import 'package:doanktl/features/login/domain/repositories/user_repository.dart';
 
-class GetUserSignIn implements UseCase<UserSigInResponse,UserSignInRequestModel> {
+class GetUserSignIn implements UseCase<UserSigInResponse,UserSignInRequest> {
   final UserRepository userRepository;
 
   GetUserSignIn({
@@ -13,7 +13,7 @@ class GetUserSignIn implements UseCase<UserSigInResponse,UserSignInRequestModel>
   });
 
   @override
-  Future<Either<Failures, UserSigInResponse>> call(UserSignInRequestModel params) async {
+  Future<Either<Failures, UserSigInResponse>> call(UserSignInRequest params) async {
     return await userRepository.getUserSignIn(params);
   }
 

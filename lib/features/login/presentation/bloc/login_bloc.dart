@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:doanktl/features/login/data/models/user_sign_in_model.dart';
+import 'package:doanktl/features/login/domain/entities/user_sign_in.dart';
 import 'package:doanktl/features/login/domain/usecases/get_user_sign_in.dart';
 
 class LoginBloc {
@@ -11,7 +12,7 @@ class LoginBloc {
   });
 
   void testUser() async {
-    UserSignInRequestModel userSignInRequest =
+    UserSignInRequest userSignInRequest =
         const UserSignInRequestModel(username: 'tony', password: '12356789');
     final response = await getUserSignIn(userSignInRequest);
     print('user is right ${response.isRight()}');
