@@ -5,12 +5,12 @@ import 'package:doanktl/features/login/data/models/user_sign_in_model.dart';
 import 'package:doanktl/features/login/domain/entities/user_sign_in.dart';
 import 'package:http/http.dart' as http;
 
-abstract class UserRemoteSources {
+abstract class UserRemoteSource {
   Future<UserSigInResponseModel> getUserSignIn(
       UserSignInRequestModel userSignInRequestModel);
 }
 
-class UserRemoteSourcesImpl implements UserRemoteSources {
+class UserRemoteSourcesImpl implements UserRemoteSource {
   final http.Client client;
 
   UserRemoteSourcesImpl({required this.client});

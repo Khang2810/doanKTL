@@ -1,30 +1,15 @@
-import 'package:dartz/dartz.dart';
-import 'package:doanktl/features/login/data/models/user_sign_in_model.dart';
-import 'package:doanktl/features/login/domain/entities/user_sign_in.dart';
-import 'package:doanktl/features/login/domain/usecases/get_user_sign_in.dart';
+import 'dart:async';
 
-class LoginBloc {
-  final GetUserSignIn getUserSignIn;
-  var name = '';
+import 'package:bloc/bloc.dart';
+import 'package:meta/meta.dart';
 
-  LoginBloc({
-    required this.getUserSignIn,
-  });
+part 'login_event.dart';
+part 'login_state.dart';
 
-  void testUser() async {
-    UserSignInRequest userSignInRequest =
-        const UserSignInRequestModel(username: 'tony', password: '12356789');
-    final response = await getUserSignIn(userSignInRequest);
-    print('user is right ${response.isRight()}');
-
-    response.fold(
-      (l) => 'error',
-      (r) {
-        name = r.userName;
-        print('user name ${r.toString()}');
-        return r;
-      },
-    );
-    print('user name ${name}');
+class LoginBloc extends Bloc<LoginEvent, LoginState> {
+  LoginBloc() : super(LoginInitial()) {
+    on<LoginEvent>((event, emit) {
+      // TODO: implement event handler
+    });
   }
 }

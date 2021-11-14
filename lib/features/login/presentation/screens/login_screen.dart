@@ -1,4 +1,4 @@
-import 'package:doanktl/features/login/presentation/bloc/login_bloc.dart';
+import 'package:doanktl/features/login/presentation/bloc/login2_bloc.dart';
 import 'package:doanktl/features/login/presentation/screens/signup_screen.dart';
 import 'package:doanktl/injection_container.dart';
 import 'package:flutter/material.dart';
@@ -124,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void appbarback() {}
 
   void loginbutton() {
-    sl<LoginBloc>().testUser();
+    sl<Login2Bloc>().testUser();
   }
 
   void signupbutton() {
