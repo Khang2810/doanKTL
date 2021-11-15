@@ -1,10 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:doanktl/core/errors/exceptions.dart';
 import 'package:doanktl/core/errors/failures.dart';
-import 'package:doanktl/core/network/network_info.dart';
 import 'package:doanktl/core/localsources/sharedsource/user_local_share_source.dart';
+import 'package:doanktl/core/network/network_info.dart';
 import 'package:doanktl/features/login/data/datasources/user_remote_source.dart';
 import 'package:doanktl/features/login/data/models/user_sign_in_model.dart';
+import 'package:doanktl/features/login/data/models/user_sign_up_model.dart';
 import 'package:doanktl/features/login/domain/entities/user_sign_in.dart';
 import 'package:doanktl/features/login/domain/entities/user_sign_up.dart';
 import 'package:doanktl/features/login/domain/repositories/user_repository.dart';
@@ -25,22 +26,31 @@ class UserRepositoryImpl extends UserRepository {
       UserSignInRequest userSignInRequest) async {
     if (await networkInfo.isConnected) {
       try {
-        final remoteUser = await userRemoteSources.getUserSignIn(
-            userSignInRequest as UserSignInRequestModel);
+        final remoteUser = await userRemoteSources
+            .getUserSignIn(userSignInRequest as UserSignInRequestModel);
         await userLocalShareSource.cacheUserSignInResponse(remoteUser);
         return Right(remoteUser);
-      } on ServerException{
+      } on ServerException {
         return Left(ServerFailures());
       }
-    }else{
+    } else {
       return Left(NetworkFailures());
     }
   }
 
   @override
   Future<Either<Failures, UserSignUpResponse>> getUserSignUp(
-      UserSignUpRequest userSignUpRequest) {
-    // TODO: implement getUserSignUp
-    throw UnimplementedError();
+      UserSignUpRequest userSignUpRequest) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final remoteSignup = await userRemoteSources
+            .getUserSignUp(userSignUpRequest as UserSignUpRequestModel);
+        return Right(remoteSignup);
+      } on ServerException {
+        return Left(ServerFailures());
+      }
+    } else {
+      return Left(NetworkFailures());
+    }
   }
 }
