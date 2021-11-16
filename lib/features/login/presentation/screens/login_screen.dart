@@ -1,7 +1,8 @@
+import 'package:doanktl/features/home/presentation/screens/home_screen.dart';
 import 'package:doanktl/features/login/presentation/bloc/login_bloc.dart';
 import 'package:doanktl/features/login/presentation/screens/signup_screen.dart';
-import 'package:doanktl/injection_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String tag = 'login_screen';
@@ -13,6 +14,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final controller = TextEditingController();
+  late String userName;
+  late String password;
   var passwordVisible = false;
 
   @override
@@ -45,6 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: SizedBox(
                     height: 50,
                     child: TextFormField(
+                      controller: controller,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -55,6 +60,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               color: Colors.grey.shade400, height: 0.9),
                           filled: true,
                           fillColor: Colors.blueGrey.shade50),
+                      onChanged: (value) {
+                        userName = value;
+                      },
                     ),
                   ),
                 ),
@@ -63,6 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: SizedBox(
                     height: 50,
                     child: TextFormField(
+                      controller: controller,
                       obscureText: !passwordVisible,
                       keyboardType: TextInputType.visiblePassword,
                       decoration: InputDecoration(
@@ -84,6 +93,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               color: Colors.grey.shade400, height: 0.9),
                           filled: true,
                           fillColor: Colors.blueGrey.shade50),
+                      onChanged: (value) {
+                        password = value;
+                      },
                     ),
                   ),
                 ),
@@ -113,6 +125,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       )),
                 ),
+                BlocConsumer<LoginBloc, LoginState>(builder: (context, state) {
+                  if (state is LoginLoading) {
+                    return const CircularProgressIndicator();
+                  }
+                  if (state is LoginError) {
+                    return const Text('login error');
+                  }
+                  return Container();
+                }, listener: (context, state) {
+                  if (state is LoginLoaded) {
+                    Navigator.popAndPushNamed(context, HomeScreen.tag);
+                  }
+                })
               ],
             ),
           ),
@@ -124,7 +149,11 @@ class _LoginScreenState extends State<LoginScreen> {
   void appbarback() {}
 
   void loginbutton() {
-    sl<LoginBloc>().testUser();
+    controller.clear();
+    BlocProvider.of<LoginBloc>(context).add(GetUserLoginEvent(
+      userName: userName,
+      password: password,
+    ));
   }
 
   void signupbutton() {

@@ -1,4 +1,8 @@
+import 'package:doanktl/features/login/presentation/bloc/login_bloc.dart';
+import 'package:doanktl/features/login/presentation/screens/login_screen.dart';
+import 'package:doanktl/screen/log_in.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUpScreen extends StatefulWidget {
   static const String tag = 'signup_screen';
@@ -10,6 +14,10 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  final controller = TextEditingController();
+  late String userName;
+  late String password;
+  late String email;
   var passwordVisible = false;
   bool? agree = false;
 
@@ -36,6 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: SizedBox(
                     height: 50,
                     child: TextFormField(
+                      controller: controller,
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -46,6 +55,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               color: Colors.grey.shade400, height: 0.9),
                           filled: true,
                           fillColor: Colors.blueGrey.shade50),
+                      onChanged: (value){
+                        userName = value;
+                      },
                     ),
                   ),
                 ),
@@ -54,6 +66,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: SizedBox(
                     height: 50,
                     child: TextFormField(
+                      controller: controller,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -64,6 +77,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               color: Colors.grey.shade400, height: 0.9),
                           filled: true,
                           fillColor: Colors.blueGrey.shade50),
+                      onChanged: (value){
+                        email = value;
+                      },
                     ),
                   ),
                 ),
@@ -72,6 +88,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: SizedBox(
                     height: 50,
                     child: TextFormField(
+                      controller: controller,
                       obscureText: !passwordVisible,
                       keyboardType: TextInputType.visiblePassword,
                       decoration: InputDecoration(
@@ -93,6 +110,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               color: Colors.grey.shade400, height: 0.9),
                           filled: true,
                           fillColor: Colors.blueGrey.shade50),
+                      onChanged: (value){
+                        password = value;
+                      },
                     ),
                   ),
                 ),
@@ -186,6 +206,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ],
                       )),
                 ),
+                BlocConsumer<LoginBloc, LoginState>(builder: (context, state) {
+                  if (state is LoginLoading) {
+                    return const CircularProgressIndicator();
+                  }
+                  if (state is LoginError) {
+                    return const Text('login error');
+                  }
+                  return Container();
+                }, listener: (context, state) {
+                  if (state is LoginLoaded) {
+                    Navigator.popAndPushNamed(context, LoginScreen.tag);
+                  }
+                }),
               ],
             ),
           ),
@@ -198,7 +231,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   void loginbutton() {}
 
-  void confirmbutton() {}
+  void confirmbutton() {
+    controller.clear();
+    BlocProvider.of<LoginBloc>(context).add(GetUserSignUpEvent(
+      userName: userName,
+      password: password,
+      email: email,
+    ));
+  }
 
   void termbutton() {}
 }

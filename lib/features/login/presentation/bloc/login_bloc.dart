@@ -1,30 +1,64 @@
+import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:doanktl/core/errors/failures.dart';
 import 'package:doanktl/features/login/data/models/user_sign_in_model.dart';
+import 'package:doanktl/features/login/data/models/user_sign_up_model.dart';
 import 'package:doanktl/features/login/domain/entities/user_sign_in.dart';
+import 'package:doanktl/features/login/domain/entities/user_sign_up.dart';
 import 'package:doanktl/features/login/domain/usecases/get_user_sign_in.dart';
+import 'package:doanktl/features/login/domain/usecases/get_user_sign_up.dart';
+import 'package:meta/meta.dart';
 
-class LoginBloc {
+part 'login_event.dart';
+
+part 'login_state.dart';
+
+class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final GetUserSignIn getUserSignIn;
-  var name = '';
+  final GetUserSignUp getUserSignUp;
 
   LoginBloc({
+    required this.getUserSignUp,
     required this.getUserSignIn,
-  });
+  }) : super(LoginInitial());
 
-  void testUser() async {
-    UserSignInRequest userSignInRequest =
-        const UserSignInRequestModel(username: 'tony', password: '12356789');
-    final response = await getUserSignIn(userSignInRequest);
-    print('user is right ${response.isRight()}');
+  @override
+  Stream<LoginState> mapEventToState(LoginEvent event) async* {
+    if (event is GetUserLoginEvent) {
+      yield LoginLoading();
+      final failureOrUserSignIn = await getUserSignIn(UserSignInRequestModel(
+        username: event.userName,
+        password: event.password,
+      ));
+      yield* _eitherLoadedOrErrorStateSigIn(failureOrUserSignIn);
+    }
+    if (event is GetUserSignUpEvent) {
+      yield LoginLoading();
+      final failureOrUserSignUp = await getUserSignUp(
+        UserSignUpRequestModel(
+          event.userName,
+          event.email,
+          event.password,
+        ),
+      );
+      yield* _eitherLoadedOrErrorStateSigUp(failureOrUserSignUp);
+    }
+  }
 
-    response.fold(
-      (l) => 'error',
-      (r) {
-        name = r.userName;
-        print('user name ${r.toString()}');
-        return r;
-      },
+  Stream<LoginState> _eitherLoadedOrErrorStateSigIn(
+    Either<Failures, UserSigInResponse> failureOrUserLogin,
+  ) async* {
+    yield failureOrUserLogin.fold(
+      (failure) => LoginError(),
+      (response) => LoginLoaded(),
     );
-    print('user name ${name}');
+  }
+  Stream<LoginState> _eitherLoadedOrErrorStateSigUp(
+      Either<Failures, UserSignUpResponse> failureOrUserSignUp,
+      ) async* {
+    yield failureOrUserSignUp.fold(
+          (failure) => LoginError(),
+          (response) => LoginLoaded(),
+    );
   }
 }
