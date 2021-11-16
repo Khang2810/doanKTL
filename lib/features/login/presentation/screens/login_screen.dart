@@ -1,4 +1,4 @@
-import 'package:doanktl/features/home/presentation/screens/home_screen.dart';
+import 'package:doanktl/features/home/screens/home_screen.dart';
 import 'package:doanktl/features/login/presentation/bloc/login_bloc.dart';
 import 'package:doanktl/features/login/presentation/screens/signup_screen.dart';
 import 'package:flutter/material.dart';

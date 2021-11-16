@@ -1,6 +1,6 @@
 import 'package:doanktl/features/authentication/presentation/bloc/auth2_bloc.dart';
 import 'package:doanktl/features/authentication/presentation/bloc/authentication_bloc.dart';
-import 'package:doanktl/features/home/presentation/screens/home_screen.dart';
+import 'package:doanktl/features/home/screens/home_screen.dart';
 import 'package:doanktl/features/login/presentation/screens/login_screen.dart';
 import 'package:doanktl/injection_container.dart';
 import 'package:flutter/material.dart';

@@ -2,6 +2,7 @@ import 'package:doanktl/core/config/routes.dart';
 import 'package:doanktl/core/constants/strings.dart';
 import 'package:doanktl/features/authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:doanktl/features/authentication/presentation/screens/splash_screen.dart';
+import 'package:doanktl/features/home/screens/home_screen.dart';
 import 'package:doanktl/injection_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: Strings.appName,
-        initialRoute: SplashScreen.tag,
+        initialRoute: HomeScreen.tag,
         routes: AppRoutes.getRoutes(),
       ),
     );
