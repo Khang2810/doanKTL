@@ -5,6 +5,10 @@ import 'package:doanktl/features/authentication/data/repositories/auth_repositor
 import 'package:doanktl/features/authentication/domain/repositories/auth_repository.dart';
 import 'package:doanktl/features/authentication/domain/usecases/check_user_login.dart';
 import 'package:doanktl/features/authentication/presentation/bloc/authentication_bloc.dart';
+import 'package:doanktl/features/home/bloc/home_bloc.dart';
+import 'package:doanktl/features/home/repositories/repository_impl/vocab_repository_impl.dart';
+import 'package:doanktl/features/home/repositories/vocab_repository.dart';
+import 'package:doanktl/features/home/services/vocab_remote_services.dart';
 import 'package:doanktl/features/login/data/datasources/user_remote_source.dart';
 import 'package:doanktl/features/login/data/repositories/user_repository_impl.dart';
 import 'package:doanktl/features/login/domain/repositories/user_repository.dart';
@@ -19,7 +23,7 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   //Bloc
-  sl.registerFactory(() => LoginBloc(getUserSignIn: sl(),getUserSignUp: sl()));
+  sl.registerFactory(() => LoginBloc(getUserSignIn: sl(), getUserSignUp: sl()));
   sl.registerFactory(() => AuthenticationBloc(checkUserLogin: sl()));
 
   //Use case
@@ -47,4 +51,13 @@ Future<void> init() async {
   sl.registerLazySingleton(() => DataConnectionChecker());
   final sharedPreferences = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() => sharedPreferences);
+
+  //Home
+  //bloc
+  sl.registerFactory(() => HomeBloc(vocabRepository: sl()));
+  //repository
+  sl.registerLazySingleton<VocabRepository>(
+      () => VocabRepositoryImpl(vocabRemoteServices: sl()));
+  //services
+  sl.registerLazySingleton(() => VocabRemoteServices());
 }
