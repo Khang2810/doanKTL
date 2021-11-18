@@ -9,7 +9,7 @@ class ExercisePage extends StatelessWidget {
         title: const Text('Dashboard'),
       ),
       body: const Center(
-        child: Text('page 1'),
+        child: Text('page 2'),
       ),
     );
   }

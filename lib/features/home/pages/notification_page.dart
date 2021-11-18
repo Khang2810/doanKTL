@@ -9,7 +9,7 @@ class NotificationPage extends StatelessWidget {
         title: const Text('Dashboard'),
       ),
       body: const Center(
-        child: Text('page 1'),
+        child: Text('page 3'),
       ),
     );
   }
