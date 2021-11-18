@@ -1,9 +1,11 @@
 import 'package:doanktl/core/localsources/sharedsource/user_local_share_source.dart';
+import 'package:doanktl/features/home/bloc/home_bloc.dart';
 import 'package:doanktl/features/home/pages/dashboard_page.dart';
 import 'package:doanktl/features/home/pages/exercise_page.dart';
 import 'package:doanktl/features/home/pages/notification_page.dart';
 import 'package:doanktl/features/home/pages/profile_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../injection_container.dart';
@@ -30,6 +32,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget currentPage = DashboardPage();
 
   @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<HomeBloc>(context).add(HomeDashboardInit());
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageStorage(
@@ -42,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-          shape: CircularNotchedRectangle(),
+          shape: const CircularNotchedRectangle(),
           notchMargin: 10,
           child: Container(
             height: 60,
@@ -94,18 +102,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       minWidth: 40,
                       onPressed: () {
                         setState(() {
-                          currentPage = DashboardPage();
-                          currentTab = 0;
+                          currentPage = NotificationPage();
+                          currentTab = 2;
                         });
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
-                            Icons.dashboard,
-                            color: currentTab == 0 ? Colors.blue : Colors.grey,
+                            Icons.notifications,
+                            color: currentTab == 2 ? Colors.blue : Colors.grey,
                           ),
-                          const Text("Dashboard"),
+                          const Text("Notification"),
                         ],
                       ),
                     ),
@@ -113,18 +121,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       minWidth: 40,
                       onPressed: () {
                         setState(() {
-                          currentPage = DashboardPage();
-                          currentTab = 0;
+                          currentPage = ProfilePage();
+                          currentTab = 3;
                         });
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
-                            Icons.dashboard,
-                            color: currentTab == 0 ? Colors.blue : Colors.grey,
+                            Icons.person,
+                            color: currentTab == 3 ? Colors.blue : Colors.grey,
                           ),
-                          const Text("Dashboard"),
+                          const Text("Profile"),
                         ],
                       ),
                     ),
