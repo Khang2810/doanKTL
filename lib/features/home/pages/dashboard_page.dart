@@ -1,4 +1,5 @@
 import 'package:doanktl/features/home/bloc/home_bloc.dart';
+import 'package:doanktl/features/home/widgets/vocab_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,9 +19,7 @@ class DashboardPage extends StatelessWidget {
               return ListView.builder(
                   itemCount: state.vocabularies.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      child: Text(state.vocabularies[index].vocabName),
-                    );
+                    return VocabItem(vocabulary: state.vocabularies[index]);
                   });
             }
             return Container();

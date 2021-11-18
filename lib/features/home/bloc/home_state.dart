@@ -10,3 +10,9 @@ class HomeLoaded extends HomeState{
 
   HomeLoaded({required this.vocabularies});
 }
+
+class ProfileLoaded extends HomeState{
+  final List<Vocabulary> vocabularies;
+
+  ProfileLoaded({required this.vocabularies});
+}

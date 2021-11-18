@@ -6,7 +6,7 @@ class ExercisePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dashboard'),
+        title: const Text('Exercise'),
       ),
       body: const Center(
         child: Text('page 2'),

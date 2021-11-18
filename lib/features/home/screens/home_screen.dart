@@ -4,6 +4,7 @@ import 'package:doanktl/features/home/pages/dashboard_page.dart';
 import 'package:doanktl/features/home/pages/exercise_page.dart';
 import 'package:doanktl/features/home/pages/notification_page.dart';
 import 'package:doanktl/features/home/pages/profile_page.dart';
+import 'package:doanktl/features/home/screens/add_vocab_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -46,7 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, AddVocabScreen.tag);
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(

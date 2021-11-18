@@ -20,6 +20,7 @@ class Vocabulary {
     required this.examples,
   });
 
+
   factory Vocabulary.fromJson(Map<String, dynamic> json) {
     var categoryObjJson = json['categories'] as List;
     var exampleObjJson = json['examples'] as List;

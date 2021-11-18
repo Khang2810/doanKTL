@@ -17,16 +17,9 @@ class _ProfilePageState extends State<ProfilePage> {
         elevation: 0,
         centerTitle: true,
         backgroundColor: Colors.grey.shade50,
-        title: Text(
+        title: const Text(
           'Profile',
           style: TextStyle(color: Colors.black, fontSize: 24),
-        ),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-          onPressed: appbarback,
         ),
       ),
       body: Center(
@@ -68,7 +61,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   'Subheading',
                   style: TextStyle(fontSize: 16),
                 ),
-              )
+              ),
+
             ],
           ),
         ),
