@@ -1,28 +1,102 @@
 [
   {
     "id": 1,
-    "vocabName": "applause",
-    "vocabVietnameseName": "",
-    "vocabMeaning": "",
+    "vocabName": "later",
+    "vocabVietnameseName": "một lát sau",
+    "vocabMeaning": "a set of time before this moment",
     "vocabImageUrl": "",
     "categories": [
       {
-        "categoryName": "appluse"
-      },
-      {
-        "categoryName": ""
+        "categoryName": "adverb"
       }
     ],
     "examples": [
       {
-        "exampleSentence": ""
+        "exampleSentence": "We'll party later"
       },
       {
-        "exampleSentence": ""
+        "exampleSentence": "It is later than i thought"
       }
     ]
   },
   {
-
+    "id": 2,
+    "vocabName": "matter",
+    "vocabVietnameseName": "tình huống đang được xử lý",
+    "vocabMeaning": "the situation being dealt with",
+    "vocabImageUrl": "",
+    "categories": [
+      {
+        "categoryName": "noun"
+      }
+    ],
+    "examples": [
+      {
+        "exampleSentence": "I don't think you understand the matter"
+      },
+      {
+        "exampleSentence": "This is a serious matter"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "vocabName": "obtain",
+    "vocabVietnameseName": "nhận lấy",
+    "vocabMeaning": "get something",
+    "vocabImageUrl": "",
+    "categories": [
+      {
+        "categoryName": "verb"
+      }
+    ],
+    "examples": [
+      {
+        "exampleSentence": "Just one more year and you will obtain the title of master"
+      },
+      {
+        "exampleSentence": "He obtained high social status"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "vocabName": "possess",
+    "vocabVietnameseName": "sở hữu",
+    "vocabMeaning": "to have as belonging to one",
+    "vocabImageUrl": "",
+    "categories": [
+      {
+        "categoryName": "verb"
+      }
+    ],
+    "examples": [
+      {
+        "exampleSentence": "The driver possessed many weapons"
+      },
+      {
+        "exampleSentence": "He possessed a rare talent"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "vocabName": "purpose",
+    "vocabVietnameseName": "mục đích",
+    "vocabMeaning": "the reason for which something is done or created or which something exists",
+    "vocabImageUrl": "",
+    "categories": [
+      {
+        "categoryName": "noun"
+      }
+    ],
+    "examples": [
+      {
+        "exampleSentence": "What's the purpose of studying at a university"
+      },
+      {
+        "exampleSentence": "My main purpose is to help others"
+      }
+    ]
   }
 ]
