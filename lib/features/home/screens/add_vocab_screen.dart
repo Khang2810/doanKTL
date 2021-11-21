@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 
 class AddVocabScreen extends StatefulWidget {
@@ -28,30 +30,44 @@ class _AddVocabScreenState extends State<AddVocabScreen> {
       body: Center(
         child: Column(
           children: <Widget>[
-            TextField(
-              decoration: InputDecoration(labelText: 'vocabulary name'),
-            ),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'vocabVietnameseName',
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextField(
+                decoration: InputDecoration(labelText: 'Vocabulary'),
               ),
             ),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'vocabMeaning',
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: 'Vietnamese meaning',
+                ),
               ),
             ),
-            TextField(
-              decoration: InputDecoration(labelText: 'vocabImageUrl'),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: 'English meaning',
+                ),
+              ),
             ),
-            Text('category'),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextField(
+                decoration: InputDecoration(labelText: 'Example photo URL'),
+              ),
+            ),
             ElevatedButton(
                 onPressed: () {
                   _displayTextInputDialog(context);
                 },
-                child: Text('add category')),
-            Row(
-              children: listCategory,
+                child: Text('Add Category')),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                children: listCategory,
+              ),
             )
           ],
         ),
@@ -64,10 +80,12 @@ class _AddVocabScreenState extends State<AddVocabScreen> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('TextField in Dialog'),
+          title: Text('Category name'),
           content: TextField(
+            autofocus: true,
             controller: _textFieldController,
-            decoration: InputDecoration(hintText: "Text Field in Dialog"),
+            decoration:
+                InputDecoration(hintText: "Exp: Sport, School, Family, ..."),
           ),
           actions: <Widget>[
             FlatButton(
@@ -77,15 +95,12 @@ class _AddVocabScreenState extends State<AddVocabScreen> {
               },
             ),
             FlatButton(
-              child: Text('OK'),
+              child: Text('ADD'),
               onPressed: () {
                 setState(() {
-                  listCategory.add(
-                    Container(
-                      margin: EdgeInsets.only(right: 20),
-                      child: Text(_textFieldController.text),
-                    ),
-                  );
+                  listCategory.add(ElevatedButton(
+                      onPressed: removebutton,
+                      child: Text(_textFieldController.text)));
                 });
                 Navigator.pop(context);
               },
@@ -95,4 +110,6 @@ class _AddVocabScreenState extends State<AddVocabScreen> {
       },
     );
   }
+
+  void removebutton() {}
 }

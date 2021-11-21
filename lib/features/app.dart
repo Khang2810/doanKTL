@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: Strings.appName,
         initialRoute: HomeScreen.tag,
         routes: AppRoutes.getRoutes(),

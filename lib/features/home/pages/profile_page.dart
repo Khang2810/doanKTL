@@ -51,8 +51,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 padding: const EdgeInsets.only(top: 20.0),
                 child: Text(
                   'Username',
-                  style:
-                  TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
               ),
               Padding(
@@ -62,7 +61,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   style: TextStyle(fontSize: 16),
                 ),
               ),
-
             ],
           ),
         ),
