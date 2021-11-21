@@ -30,6 +30,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     if(event is HomeProfileInit){
       print(event.userSigInResponse.id);
       final data = await vocabRepository.getUserVocabularies(event.userSigInResponse.id);
+      yield ProfileLoaded(vocabularies: data);
     }
   }
 }

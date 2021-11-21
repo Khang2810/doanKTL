@@ -46,8 +46,6 @@ class _HomeScreenState extends State<HomeScreen> {
       listener: (context, state) {
         if (state is AuthenticationLogin) {
           userSigInResponse = state.userSigInResponse;
-          BlocProvider.of<HomeBloc>(context)
-              .add(HomeProfileInit(userSigInResponse));
         }
       },
       child: Scaffold(
