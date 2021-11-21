@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:doanktl/core/errors/failures.dart';
 import 'package:doanktl/core/usecases/usecase.dart';
-import 'package:doanktl/features/authentication/domain/entities/user_status.dart';
 import 'package:doanktl/features/authentication/domain/usecases/check_user_login.dart';
+import 'package:doanktl/features/login/domain/entities/user_sign_in.dart';
 import 'package:meta/meta.dart';
 
 part 'authentication_event.dart';
@@ -27,10 +27,10 @@ class AuthenticationBloc
   }
 
   Stream<AuthenticationState> _eitherSignInOrNot(
-      Either<Failures, UserStatus> failureOrStatus) async* {
+      Either<Failures, UserSigInResponse> failureOrStatus) async* {
     yield failureOrStatus.fold(
-      (failure) =>  AuthenticationNotLogin(),
-      (userStatus) => AuthenticationLogin(),
+      (failure) => AuthenticationNotLogin(),
+      (userStatus) => AuthenticationLogin(userStatus),
     );
   }
 }

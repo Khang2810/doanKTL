@@ -12,7 +12,7 @@ class VocabRemoteServices {
 
     return list.map((data) => Vocabulary.fromJson(data)).toList();
   }
-  Future<void> uploadVocabulary(InputVocab inputVocab)async {
+  Future<void> uploadVocabulary(InputVocab inputVocab) async {
     print('input vocab' + inputVocab.toString());
   }
   Future<List<Vocabulary>> readJsonDataOfUser(double userId) async {

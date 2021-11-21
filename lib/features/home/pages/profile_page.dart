@@ -1,7 +1,10 @@
+import 'package:doanktl/features/authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfilePage extends StatefulWidget {
+
   const ProfilePage({Key? key}) : super(key: key);
 
   @override
@@ -10,6 +13,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   bool cursoronav = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,10 +53,21 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
-                child: Text(
-                  'Username',
-                  style:
-                  TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+                  builder: (context, state) {
+                    if (state is AuthenticationLogin) {
+                      return Text(
+                        state.userSigInResponse.userName,
+                        style: const TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold),
+                      );
+                    }
+                    return Text(
+                      'Username',
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    );
+                  },
                 ),
               ),
               Padding(
@@ -62,7 +77,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   style: TextStyle(fontSize: 16),
                 ),
               ),
-
             ],
           ),
         ),
