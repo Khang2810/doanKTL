@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:doanktl/core/errors/failures.dart';
 import 'package:doanktl/core/usecases/usecase.dart';
-import 'package:doanktl/features/authentication/domain/entities/user_status.dart';
 import 'package:doanktl/features/authentication/domain/repositories/auth_repository.dart';
+import 'package:doanktl/features/login/domain/entities/user_sign_in.dart';
 
-class CheckUserLogin implements UseCase<UserStatus, NoParams> {
+class CheckUserLogin implements UseCase<UserSigInResponse, NoParams> {
   final AuthRepository authRepository;
 
   CheckUserLogin({
@@ -12,7 +12,7 @@ class CheckUserLogin implements UseCase<UserStatus, NoParams> {
   });
 
   @override
-  Future<Either<Failures, UserStatus>> call(NoParams params) async {
+  Future<Either<Failures, UserSigInResponse>> call(NoParams params) async {
     return await authRepository.getUserStatus();
   }
 }

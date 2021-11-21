@@ -12,12 +12,12 @@ class VocabRemoteServices {
 
     return list.map((data) => Vocabulary.fromJson(data)).toList();
   }
-  Future<void> uploadVocabulary(InputVocab inputVocab)async {
+  Future<void> uploadVocabulary(InputVocab inputVocab) async {
     print('input vocab' + inputVocab.toString());
   }
   Future<List<Vocabulary>> readJsonDataOfUser(double userId) async {
     final jsonData =
-    await rootBundle.rootBundle.loadString('assets/json/vocab.json');
+    await rootBundle.rootBundle.loadString('assets/json/uservocab.json');
     final list = json.decode(jsonData) as List<dynamic>;
 
     return list.map((data) => Vocabulary.fromJson(data)).toList();

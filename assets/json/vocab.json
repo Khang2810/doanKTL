@@ -7,14 +7,17 @@
     "vocabImageUrl": "https://cdn.wallpapersafari.com/95/5/3rRDsg.jpg",
     "categories": [
       {
+        "id": 1,
         "categoryName": "adverb"
       }
     ],
     "examples": [
       {
+        "id": 1,
         "exampleSentence": "We'll party later"
       },
       {
+        "id": 2,
         "exampleSentence": "It is later than i thought"
       }
     ]
@@ -27,14 +30,17 @@
     "vocabImageUrl": "https://cdn.wallpapersafari.com/72/40/9lov8z.jpg",
     "categories": [
       {
+        "id": 2,
         "categoryName": "noun"
       }
     ],
     "examples": [
       {
+        "id": 3,
         "exampleSentence": "I don't think you understand the matter"
       },
       {
+        "id": 4,
         "exampleSentence": "This is a serious matter"
       }
     ]
@@ -47,14 +53,17 @@
     "vocabImageUrl": "https://i.pinimg.com/originals/97/52/34/975234355136bda9a2f1fd7dcdec09e0.jpg",
     "categories": [
       {
+        "id": 2,
         "categoryName": "verb"
       }
     ],
     "examples": [
       {
+        "id": 2,
         "exampleSentence": "Just one more year and you will obtain the title of master"
       },
       {
+        "id": 2,
         "exampleSentence": "He obtained high social status"
       }
     ]
@@ -67,14 +76,17 @@
     "vocabImageUrl": "http://www.imagesavant.com/images-720/halo2-720.0001.jpg",
     "categories": [
       {
+        "id": 2,
         "categoryName": "verb"
       }
     ],
     "examples": [
       {
+        "id": 2,
         "exampleSentence": "The driver possessed many weapons"
       },
       {
+        "id": 2,
         "exampleSentence": "He possessed a rare talent"
       }
     ]
@@ -87,14 +99,17 @@
     "vocabImageUrl": "https://www.teahub.io/photos/full/45-456248_sad-anime-wallpaper-aesthetic.jpg",
     "categories": [
       {
+        "id": 2,
         "categoryName": "noun"
       }
     ],
     "examples": [
       {
+        "id": 2,
         "exampleSentence": "What's the purpose of studying at a university"
       },
       {
+        "id": 2,
         "exampleSentence": "My main purpose is to help others"
       }
     ]

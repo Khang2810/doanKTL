@@ -1,3 +1,4 @@
+import 'package:doanktl/features/authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:doanktl/features/home/screens/home_screen.dart';
 import 'package:doanktl/features/login/presentation/bloc/login_bloc.dart';
 import 'package:doanktl/features/login/presentation/screens/signup_screen.dart';
@@ -14,7 +15,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final controller = TextEditingController();
+  final userNameController = TextEditingController();
+  final passwordController = TextEditingController();
   late String userName;
   late String password;
   var passwordVisible = false;
@@ -49,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: SizedBox(
                     height: 50,
                     child: TextFormField(
-                      controller: controller,
+                      controller: userNameController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -71,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: SizedBox(
                     height: 50,
                     child: TextFormField(
-                      controller: controller,
+                      controller: passwordController,
                       obscureText: !passwordVisible,
                       keyboardType: TextInputType.visiblePassword,
                       decoration: InputDecoration(
@@ -135,6 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   return Container();
                 }, listener: (context, state) {
                   if (state is LoginLoaded) {
+                    BlocProvider.of<AuthenticationBloc>(context).add(CheckLoginEvent());
                     Navigator.popAndPushNamed(context, HomeScreen.tag);
                   }
                 })
@@ -149,7 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void appbarback() {}
 
   void loginbutton() {
-    controller.clear();
+    // controller.clear();
     BlocProvider.of<LoginBloc>(context).add(GetUserLoginEvent(
       userName: userName,
       password: password,

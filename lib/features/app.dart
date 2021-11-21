@@ -1,6 +1,7 @@
 import 'package:doanktl/core/config/routes.dart';
 import 'package:doanktl/core/constants/strings.dart';
 import 'package:doanktl/features/authentication/presentation/bloc/authentication_bloc.dart';
+import 'package:doanktl/features/authentication/presentation/screens/splash_screen.dart';
 import 'package:doanktl/features/home/bloc/home_bloc.dart';
 import 'package:doanktl/features/home/screens/home_screen.dart';
 import 'package:doanktl/features/login/presentation/bloc/login_bloc.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: Strings.appName,
-        initialRoute: HomeScreen.tag,
+        initialRoute: SplashScreen.tag,
         routes: AppRoutes.getRoutes(),
       ),
     );

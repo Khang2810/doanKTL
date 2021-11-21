@@ -7,14 +7,17 @@
       "vocabImageUrl": "",
       "categories": [
         {
+          "id": 1,
           "categoryName": "adverb"
         }
       ],
       "examples": [
         {
+          "id": 1,
           "exampleSentence": "We'll party later"
         },
         {
+          "id": 1,
           "exampleSentence": "It is later than i thought"
         }
       ]
@@ -27,14 +30,17 @@
       "vocabImageUrl": "",
       "categories": [
         {
+          "id": 1,
           "categoryName": "noun"
         }
       ],
       "examples": [
         {
+          "id": 1,
           "exampleSentence": "I don't think you understand the matter"
         },
         {
+          "id": 1,
           "exampleSentence": "This is a serious matter"
         }
       ]
@@ -47,14 +53,17 @@
       "vocabImageUrl": "",
       "categories": [
         {
+          "id": 1,
           "categoryName": "verb"
         }
       ],
       "examples": [
         {
+          "id": 1,
           "exampleSentence": "Just one more year and you will obtain the title of master"
         },
         {
+          "id": 1,
           "exampleSentence": "He obtained high social status"
         }
       ]
@@ -67,14 +76,17 @@
       "vocabImageUrl": "",
       "categories": [
         {
+          "id": 1,
           "categoryName": "verb"
         }
       ],
       "examples": [
         {
+          "id": 1,
           "exampleSentence": "The driver possessed many weapons"
         },
         {
+          "id": 1,
           "exampleSentence": "He possessed a rare talent"
         }
       ]
@@ -87,14 +99,17 @@
       "vocabImageUrl": "",
       "categories": [
         {
+          "id": 1,
           "categoryName": "noun"
         }
       ],
       "examples": [
         {
+          "id": 1,
           "exampleSentence": "What's the purpose of studying at a university"
         },
         {
+          "id": 1,
           "exampleSentence": "My main purpose is to help others"
         }
       ]

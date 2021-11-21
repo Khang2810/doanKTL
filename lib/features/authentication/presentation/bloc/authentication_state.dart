@@ -7,4 +7,8 @@ class AuthenticationInitial extends AuthenticationState {}
 
 class AuthenticationNotLogin extends AuthenticationState{}
 
-class AuthenticationLogin extends AuthenticationState{}
+class AuthenticationLogin extends AuthenticationState{
+  final UserSigInResponse userSigInResponse;
+
+  AuthenticationLogin(this.userSigInResponse);
+}
