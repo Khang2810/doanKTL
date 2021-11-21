@@ -11,6 +11,24 @@ class VocabItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: Column(
+        children: [
+          Image.network(vocabulary.vocabImageUrl),
+          Row(
+            children: [Text(vocabulary.vocabName), Text('/ˈflʌt̬.ɚ/')],
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: Text(vocabulary.vocabMeaning),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: Text(vocabulary.vocabVietnameseName),
+          )
+        ],
+      ),
+    );
   }
 }

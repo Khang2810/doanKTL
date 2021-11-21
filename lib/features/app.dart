@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: Strings.appName,
         initialRoute: SplashScreen.tag,
         routes: AppRoutes.getRoutes(),

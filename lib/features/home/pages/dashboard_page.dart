@@ -8,26 +8,37 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Dashboard'),
-      ),
-      body: Center(
-        child: BlocBuilder<HomeBloc, HomeState>(
-          builder: (context, state) {
-            if (state is HomeLoaded) {
-              return ListView.builder(
-                  itemCount: state.vocabularies.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return VocabItem(vocabulary: state.vocabularies[index]);
-                  });
-            }
-            return Container();
-          },
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Dashboard'),
+          actions: [
+            IconButton(
+                onPressed: searchbutton,
+                icon: Icon(
+                  Icons.search,
+                  size: 36,
+                ))
+          ],
+        ),
+        body: Center(
+          child: BlocBuilder<HomeBloc, HomeState>(
+            builder: (context, state) {
+              if (state is HomeLoaded) {
+                return ListView.builder(
+                    itemCount: state.vocabularies.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return VocabItem(vocabulary: state.vocabularies[index]);
+                    });
+              }
+              return Container();
+            },
+          ),
         ),
       ),
     );
   }
 
   void testData() {}
+  void searchbutton() {}
 }

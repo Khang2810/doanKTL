@@ -13,7 +13,6 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   bool cursoronav = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,6 +76,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   style: TextStyle(fontSize: 16),
                 ),
               ),
+
             ],
           ),
         ),
