@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
 class FindVocabScreen extends StatefulWidget {
+  static const String tag = 'find_screen';
+
   const FindVocabScreen({Key? key}) : super(key: key);
 
   @override
@@ -9,8 +12,13 @@ class FindVocabScreen extends StatefulWidget {
 class _FindVocabScreenState extends State<FindVocabScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('find screen'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Find Vocab"),
+      ),
+      body: Center(
+        child: Text("find"),
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:doanktl/features/home/bloc/home_bloc.dart';
+import 'package:doanktl/features/home/screens/find_vocab_screen.dart';
 import 'package:doanktl/features/home/widgets/vocab_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +15,7 @@ class DashboardPage extends StatelessWidget {
           title: const Text('Dashboard'),
           actions: [
             IconButton(
-                onPressed: searchbutton,
+                onPressed: () => searchbutton(context),
                 icon: Icon(
                   Icons.search,
                   size: 36,
@@ -40,5 +41,8 @@ class DashboardPage extends StatelessWidget {
   }
 
   void testData() {}
-  void searchbutton() {}
+
+  void searchbutton(BuildContext context) {
+    Navigator.pushNamed(context, FindVocabScreen.tag);
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:doanktl/features/authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:doanktl/features/authentication/presentation/screens/splash_screen.dart';
 import 'package:doanktl/features/home/screens/add_vocab_screen.dart';
+import 'package:doanktl/features/home/screens/find_vocab_screen.dart';
 import 'package:doanktl/features/home/screens/home_screen.dart';
 import 'package:doanktl/features/login/presentation/screens/login_screen.dart';
 import 'package:doanktl/features/login/presentation/screens/signup_screen.dart';
@@ -18,6 +19,7 @@ class AppRoutes {
       SignUpScreen.tag: (_) => const SignUpScreen(),
       HomeScreen.tag: (_) => const HomeScreen(),
       AddVocabScreen.tag: (_) => const AddVocabScreen(),
+      FindVocabScreen.tag: (_) => const FindVocabScreen(),
     };
     return routes;
   }
