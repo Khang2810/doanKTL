@@ -1,3 +1,4 @@
+import 'package:doanktl/features/home/screens/find_vocab_screen.dart';
 import 'package:flutter/material.dart';
 
 class ExercisePage extends StatelessWidget {
@@ -9,7 +10,7 @@ class ExercisePage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(title: const Text('Exercise'), actions: [
           IconButton(
-              onPressed: searchbutton,
+              onPressed: () => searchbutton(context),
               icon: Icon(
                 Icons.search,
                 size: 36,
@@ -22,5 +23,7 @@ class ExercisePage extends StatelessWidget {
     );
   }
 
-  void searchbutton() {}
+  void searchbutton(BuildContext context) {
+    Navigator.pushNamed(context, FindVocabScreen.tag);
+  }
 }

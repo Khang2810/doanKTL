@@ -79,6 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           minWidth: 40,
                           onPressed: () {
                             setState(() {
+                              BlocProvider.of<HomeBloc>(context).add(HomeDashboardInit());
                               currentPage = DashboardPage();
                               currentTab = 0;
                             });

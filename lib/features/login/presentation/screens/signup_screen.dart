@@ -1,6 +1,5 @@
 import 'package:doanktl/features/login/presentation/bloc/login_bloc.dart';
 import 'package:doanktl/features/login/presentation/screens/login_screen.dart';
-import 'package:doanktl/screen/log_in.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,7 +13,9 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final controller = TextEditingController();
+  final userNameController = TextEditingController();
+  final userEmailController = TextEditingController();
+  final userPasswordController = TextEditingController();
   late String userName;
   late String password;
   late String email;
@@ -44,7 +45,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: SizedBox(
                     height: 50,
                     child: TextFormField(
-                      controller: controller,
+                      controller: userNameController,
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -55,7 +56,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               color: Colors.grey.shade400, height: 0.9),
                           filled: true,
                           fillColor: Colors.blueGrey.shade50),
-                      onChanged: (value){
+                      onChanged: (value) {
                         userName = value;
                       },
                     ),
@@ -66,7 +67,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: SizedBox(
                     height: 50,
                     child: TextFormField(
-                      controller: controller,
+                      controller: userEmailController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -77,7 +78,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               color: Colors.grey.shade400, height: 0.9),
                           filled: true,
                           fillColor: Colors.blueGrey.shade50),
-                      onChanged: (value){
+                      onChanged: (value) {
                         email = value;
                       },
                     ),
@@ -88,7 +89,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: SizedBox(
                     height: 50,
                     child: TextFormField(
-                      controller: controller,
+                      controller: userPasswordController,
                       obscureText: !passwordVisible,
                       keyboardType: TextInputType.visiblePassword,
                       decoration: InputDecoration(
@@ -110,38 +111,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               color: Colors.grey.shade400, height: 0.9),
                           filled: true,
                           fillColor: Colors.blueGrey.shade50),
-                      onChanged: (value){
+                      onChanged: (value) {
                         password = value;
                       },
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: SizedBox(
-                    height: 50,
-                    child: TextFormField(
-                      obscureText: !passwordVisible,
-                      keyboardType: TextInputType.visiblePassword,
-                      decoration: InputDecoration(
-                          suffixIcon: IconButton(
-                            icon: passwordVisible
-                                ? Icon(Icons.visibility)
-                                : Icon(Icons.visibility_off),
-                            onPressed: () {
-                              setState(() {
-                                passwordVisible = !passwordVisible;
-                              });
-                            },
-                          ),
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                          hintText: 'Confirm password',
-                          hintStyle: TextStyle(
-                              color: Colors.grey.shade400, height: 0.9),
-                          filled: true,
-                          fillColor: Colors.blueGrey.shade50),
                     ),
                   ),
                 ),
@@ -232,7 +204,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void loginbutton() {}
 
   void confirmbutton() {
-    controller.clear();
     BlocProvider.of<LoginBloc>(context).add(GetUserSignUpEvent(
       userName: userName,
       password: password,
